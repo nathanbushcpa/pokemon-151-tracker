@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Pokémon 151 Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Pokémon 151 Tracker</h1>
+    <p>Tap a card to mark it as collected. Lock the tracker to avoid accidental taps.</p>
+    <div id="controls">
+      <div id="progress-container">
+        <span id="progress" aria-live="polite">Collected: 0 / 151</span>
+        <button id="lock-btn" aria-pressed="false" title="Toggle lock">🔓 Unlock</button>
+      </div>
+      <div id="searchbar">
+        <input id="search" type="search" placeholder="Search by name or # (e.g., Pikachu or 25)" aria-label="Search Pokémon"/>
+        <button id="clear-search" title="Clear search">Clear</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="pokemon-grid" aria-label="Pokémon list"></main>
+
+  <footer>
+    <button id="reset" title="Clear collected data">Reset Collection</button>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
