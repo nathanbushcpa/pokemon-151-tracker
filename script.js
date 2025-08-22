@@ -1,3 +1,27 @@
+
+// Primary + fallback sprite sources
+const sources = [
+  (i)=>`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/${i}.png`,
+  (i)=>`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${i}.png`
+];
+
+function imgWithFallback(i, alt){
+  const img = document.createElement('img');
+  img.loading = 'lazy';
+  img.alt = alt;
+  let idx = 0;
+  img.src = sources[idx](i);
+  img.onerror = () => {
+    idx++;
+    if(idx < sources.length){
+      img.src = sources[idx](i);
+    }else{
+      img.onerror = null;
+      img.alt = alt + ' (image unavailable)';
+    }
+  };
+  return img;
+}
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2'
 const SUPABASE_URL = 'https://xfdezdzkfvmggzhdcvri.supabase.co'
 const SUPABASE_ANON_KEY = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InhmZGV6ZHprZnZtZ2d6aGRjdnJpIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTU4MzI4NDgsImV4cCI6MjA3MTQwODg0OH0.wMpSahRo3xn2jqiKxSJdMrXHyHwWVVsiPK-Td7kN3ws'
@@ -49,7 +73,7 @@ const names = [
 ]
 
 function updateProgress(){ progressText.textContent = `Collected: ${collected.length} / 151` }
-function updateLockButton(){ lockBtn.textContent = locked ? '🔒 Locked' : '🔓 Unlock'; lockBtn.setAttribute('aria-pressed', String(locked)) }
+function updateLockButton(){ lockBtn.textContent = locked ? '🔒 Locked' : '🔓 Unlocked'; lockBtn.setAttribute('aria-pressed', String(locked)) }
 function persistLocal(){ localStorage.setItem('collectedPokemon', JSON.stringify(collected)) }
 function showError(el, msg){ el.textContent = msg; el.classList.add('show') }
 function clearError(el){ el.textContent = ''; el.classList.remove('show') }
