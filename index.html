@@ -3,27 +3,39 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon 151 Tracker — Email/Password Sync</title>
+  <title>Pokémon 151 Tracker — Updated</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Pokémon 151 Tracker</h1>
-    <p>Tap a card to mark it as collected. Lock to avoid accidental taps. Sign in to sync across devices.</p>
+    <p>Tap a card to mark it as collected. Lock to avoid accidental taps. Sign in (optional) to sync across devices.</p>
 
     <div id="controls">
       <div id="progress-container">
         <span id="progress" aria-live="polite">Collected: 0 / 151</span>
-        <button id="lock-btn" aria-pressed="false" title="Toggle lock">🔓 Unlock</button>
+        <button id="lock-btn" aria-pressed="false" title="Toggle lock">🔓 Unlocked</button>
       </div>
 
       <div id="searchbar">
+        <div id="sorter">
+          <label for="sort-select">Sort:</label>
+          <select id="sort-select" aria-label="Sort Pokémon">
+            <option value="num">Number</option>
+            <option value="name">Name (A–Z)</option>
+            <option value="collected">Collected first</option>
+          </select>
+        </div>
+
         <input id="search" type="search" placeholder="Search by name or # (e.g., Pikachu or 25)" aria-label="Search Pokémon"/>
         <button id="clear-search" title="Clear search">Clear</button>
+
+        <div id="theme-toggle-wrap">
+          <button id="theme-toggle" type="button" title="Toggle dark mode">🌓 Theme</button>
+        </div>
       </div>
 
       <div id="auth">
-        <!-- Signed out views -->
         <div id="auth-signed-out" class="card">
           <div class="tabs">
             <button id="tab-signin" class="tab active" type="button">Sign In</button>
@@ -47,7 +59,6 @@
           </form>
         </div>
 
-        <!-- Signed in view -->
         <div id="auth-signed-in" class="card" hidden>
           <span id="user-email"></span>
           <button id="signout">Sign out</button>
@@ -62,6 +73,6 @@
     <button id="reset" title="Clear collected data">Reset Collection</button>
   </footer>
 
-  <script type="module" src="script.js"></script>
+  <script type="module" src="script.js?v=7"></script>
 </body>
 </html>
