@@ -3,21 +3,34 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon 151 Tracker</title>
+  <title>Pokémon 151 Tracker — Sync</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Pokémon 151 Tracker</h1>
-    <p>Tap a card to mark it as collected. Lock the tracker to avoid accidental taps.</p>
+    <p>Tap a card to mark it as collected. Lock to avoid accidental taps. Sign in to sync across devices.</p>
+
     <div id="controls">
       <div id="progress-container">
         <span id="progress" aria-live="polite">Collected: 0 / 151</span>
         <button id="lock-btn" aria-pressed="false" title="Toggle lock">🔓 Unlock</button>
       </div>
+
       <div id="searchbar">
         <input id="search" type="search" placeholder="Search by name or # (e.g., Pikachu or 25)" aria-label="Search Pokémon"/>
         <button id="clear-search" title="Clear search">Clear</button>
+      </div>
+
+      <div id="auth">
+        <div id="auth-signed-out">
+          <input id="email" type="email" placeholder="you@example.com" aria-label="Email for sign-in"/>
+          <button id="email-link">Send Magic Link</button>
+        </div>
+        <div id="auth-signed-in" hidden>
+          <span id="user-email"></span>
+          <button id="signout">Sign out</button>
+        </div>
       </div>
     </div>
   </header>
@@ -28,6 +41,7 @@
     <button id="reset" title="Clear collected data">Reset Collection</button>
   </footer>
 
-  <script src="script.js"></script>
+  <!-- Use ES modules so we can import supabase-js from ESM -->
+  <script type="module" src="script.js"></script>
 </body>
 </html>
