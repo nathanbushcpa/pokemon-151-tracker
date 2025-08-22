@@ -6,6 +6,7 @@
   --text:#222;
   --muted:#666;
   --ring:rgba(0,0,0,0.12);
+  --error:#b00020;
 }
 *{box-sizing:border-box}
 html,body{height:100%}
@@ -63,6 +64,26 @@ header p{ margin:.25rem 0 .75rem; opacity:.95 }
 }
 #lock-btn:hover{ background:#ffe5e5; }
 
+#auth{ display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; justify-content:center }
+.card{
+  background:#fff; border-radius:12px; padding:.8rem; box-shadow:0 2px 8px var(--ring);
+  display:flex; flex-direction:column; gap:.5rem; min-width:min(520px, 92vw);
+}
+.tabs{ display:flex; gap:.25rem; }
+.tab{
+  flex:1; padding:.5rem; border:none; border-radius:8px;
+  background:#f2f2f2; cursor:pointer; font-weight:700; color:#444;
+}
+.tab.active{ background:#ffe5e5; color:var(--brand) }
+.auth-form{ display:flex; flex-direction:column; gap:.5rem; }
+.auth-form input{
+  padding:.55rem .75rem; border-radius:10px; border:none; box-shadow:0 2px 6px var(--ring);
+}
+.linkish{ background:#fff; color:var(--brand); }
+.linkish:hover{ background:#ffe5e5; }
+.error{ color:#fff; background:var(--error); padding:.35rem .5rem; border-radius:8px; display:none }
+.error.show{ display:block }
+
 #pokemon-grid{
   display:grid;
   grid-template-columns: repeat(auto-fit, minmax(130px, 1fr));
@@ -104,7 +125,5 @@ button{
   box-shadow:0 2px 6px var(--ring);
 }
 button:hover{ background:var(--brand-dark); }
-#auth{ display:flex; gap:.5rem; align-items:center; flex-wrap:wrap; justify-content:center }
-#auth input{ padding:.5rem .7rem; border-radius:8px; border:none; box-shadow:0 2px 6px var(--ring); }
-#auth button{ background:#fff; color:var(--brand); }
-#auth button:hover{ background:#ffe5e5; }
+
+.hidden{ display:none }
