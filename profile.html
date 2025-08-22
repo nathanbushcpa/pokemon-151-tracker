@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Profile — Pokémon 151 Tracker</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <header>
+    <h1>Profile</h1>
+    <p>Manage your account and see your sync status.</p>
+    <div id="controls">
+      <div id="progress-container">
+        <a class="linkish" href="index.html">← Back to Tracker</a>
+        <span id="login-status" class="status-pill" aria-live="polite">Signed out</span>
+        <button id="theme-toggle" type="button" title="Toggle dark mode">🌓 Theme</button>
+      </div>
+    </div>
+  </header>
+
+  <main id="profile-main" aria-label="Profile">
+    <section class="card" style="max-width:720px;margin:14px auto">
+      <h2>Account</h2>
+      <div class="profile-row"><strong>Status:</strong> <span id="profile-status">Signed out</span></div>
+      <div class="profile-row"><strong>Email:</strong> <span id="profile-email">—</span></div>
+      <div class="profile-row"><strong>Collected:</strong> <span id="profile-count">0 / 151</span></div>
+      <div class="profile-row"><strong>Last cloud sync:</strong> <span id="profile-sync">Never</span></div>
+
+      <div class="actions" style="display:flex;gap:.5rem;flex-wrap:wrap;margin-top:.8rem">
+        <button id="btn-open-signin" type="button">Sign in</button>
+        <button id="btn-open-signup" type="button" class="linkish">Create account</button>
+        <button id="btn-reset" type="button" class="linkish">Reset password</button>
+        <button id="btn-signout" type="button" style="background:#c62828">Sign out</button>
+      </div>
+    </section>
+
+    <section class="card" style="max-width:720px;margin:14px auto">
+      <h2>Sign in / Create account</h2>
+      <div class="tabs">
+        <button id="tab-signin" class="tab active" type="button">Sign In</button>
+        <button id="tab-signup" class="tab" type="button">Create Account</button>
+      </div>
+
+      <form id="form-signin" class="auth-form" autocomplete="on">
+        <input id="si-email" type="email" placeholder="you@example.com" required />
+        <input id="si-password" type="password" placeholder="Password" required />
+        <button id="signin" type="submit">Sign In</button>
+        <div id="si-error" class="error" role="alert" aria-live="assertive"></div>
+      </form>
+
+      <form id="form-signup" class="auth-form hidden" autocomplete="new-password">
+        <input id="su-email" type="email" placeholder="you@example.com" required />
+        <input id="su-password" type="password" placeholder="Password (min 6 chars)" minlength="6" required />
+        <input id="su-password2" type="password" placeholder="Confirm password" minlength="6" required />
+        <button id="signup" type="submit">Create Account</button>
+        <div id="su-error" class="error" role="alert" aria-live="assertive"></div>
+      </form>
+    </section>
+  </main>
+
+  <script type="module" src="script_profile.js?v=11"></script>
+</body>
+</html>

@@ -3,18 +3,23 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Pokémon 151 Tracker — Updated</title>
+  <title>Pokémon 151 Tracker — v11</title>
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <header>
     <h1>Pokémon 151 Tracker</h1>
-    <p>Tap a card to mark it as collected. Lock to avoid accidental taps. Sign in (optional) to sync across devices.</p>
+    <p>Tap a card to mark it as collected. Lock to avoid accidental taps. Sign in to sync.</p>
 
     <div id="controls">
       <div id="progress-container">
         <span id="progress" aria-live="polite">Collected: 0 / 151</span>
         <button id="lock-btn" aria-pressed="false" title="Toggle lock">🔓 Unlocked</button>
+        <span id="login-status" class="status-pill" aria-live="polite">Signed out</span>
+        <a id="profile-link" class="linkish" href="profile.html">👤 Profile</a>
+        <a id="avatar-link" href="profile.html" aria-label="Open profile" class="avatar hidden">
+          <span id="user-avatar" aria-hidden="true">?</span>
+        </a>
       </div>
 
       <div id="searchbar">
@@ -34,36 +39,6 @@
           <button id="theme-toggle" type="button" title="Toggle dark mode">🌓 Theme</button>
         </div>
       </div>
-
-      <div id="auth">
-        <div id="auth-signed-out" class="card">
-          <div class="tabs">
-            <button id="tab-signin" class="tab active" type="button">Sign In</button>
-            <button id="tab-signup" class="tab" type="button">Create Account</button>
-          </div>
-
-          <form id="form-signin" class="auth-form" autocomplete="on">
-            <input id="si-email" type="email" placeholder="you@example.com" required />
-            <input id="si-password" type="password" placeholder="Password" required />
-            <button id="btn-signin" type="submit">Sign In</button>
-            <button id="btn-reset" type="button" class="linkish">Forgot password?</button>
-            <div id="si-error" class="error" role="alert" aria-live="assertive"></div>
-          </form>
-
-          <form id="form-signup" class="auth-form hidden" autocomplete="new-password">
-            <input id="su-email" type="email" placeholder="you@example.com" required />
-            <input id="su-password" type="password" placeholder="Password (min 6 chars)" minlength="6" required />
-            <input id="su-password2" type="password" placeholder="Confirm password" minlength="6" required />
-            <button id="btn-signup" type="submit">Create Account</button>
-            <div id="su-error" class="error" role="alert" aria-live="assertive"></div>
-          </form>
-        </div>
-
-        <div id="auth-signed-in" class="card" hidden>
-          <span id="user-email"></span>
-          <button id="signout">Sign out</button>
-        </div>
-      </div>
     </div>
   </header>
 
@@ -73,6 +48,6 @@
     <button id="reset" title="Clear collected data">Reset Collection</button>
   </footer>
 
-  <script type="module" src="script.js?v=7"></script>
+  <script type="module" src="script.js?v=11"></script>
 </body>
 </html>
